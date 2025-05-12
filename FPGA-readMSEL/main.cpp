@@ -15,6 +15,9 @@
 #include <iostream>
 using namespace std;
 
+volatile void* __hps_virtualAdreess_FPGAMGR;
+volatile void* __hps_virtualAdreess_FPGAMFRDATA;
+volatile int __fd;
 
 // Enable the Diagnostic Mode
 #define DEBUG_ALT_FPGA_MANAGER
