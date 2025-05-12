@@ -17,6 +17,13 @@ using namespace std;
 
 #pragma region convert to string 
 
+
+volatile void* __hps_virtualAdreess_FPGAMGR;
+volatile void* __hps_virtualAdreess_FPGAMFRDATA;
+volatile int __fd;
+
+
+
 string std2str(ALT_FPGA_STATE_t std)
 {
 	switch (std)
