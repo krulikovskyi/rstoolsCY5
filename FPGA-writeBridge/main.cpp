@@ -61,6 +61,10 @@ bool checkIfInputIsVailed(string input, bool DecHex)
 }
 #pragma endregion
 
+volatile void* __hps_virtualAdreess_FPGAMGR;
+volatile void* __hps_virtualAdreess_FPGAMFRDATA;
+volatile int __fd;
+
 int main(int argc, const char* argv[])
 {
 	// Debugging Test values 
