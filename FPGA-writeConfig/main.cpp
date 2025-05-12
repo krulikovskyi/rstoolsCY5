@@ -15,9 +15,7 @@
 #include <iostream>
 using namespace std;
 
-volatile void* __hps_virtualAdreess_FPGAMGR;
-volatile void* __hps_virtualAdreess_FPGAMFRDATA;
-volatile int __fd;
+
 
 
 #pragma region File Accsess 
