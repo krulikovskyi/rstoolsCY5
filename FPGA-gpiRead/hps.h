@@ -61,32 +61,35 @@ extern "C"
     #include <sys/stat.h>
     #include <fcntl.h>
     #include <unistd.h>
-	
+
+#ifndef HPS_H
+#define HPS_H
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-extern volatile void* __hps_virtualAdreess_FPGAMGR;
-extern volatile void* __hps_virtualAdreess_FPGAMFRDATA;
-extern volatile int __fd;
-
+extern int __fd;
+extern void *__hps_virtualAdreess_FPGAMGR;
+extern void *__hps_virtualAdreess_FPGAMFRDATA;
 #ifdef __cplusplus
 }
 #endif
+#endif // HPS_H
 
     //
     // macro to include the virtual Memory 
     //
     //
-#define __VIRTUALMEM_SPACE_INIT()                             \
-        __fd = open("/dev/mem", (O_RDWR | O_SYNC));                                                                              \
-	__hps_virtualAdreess_FPGAMFRDATA  = mmap(NULL, 0x04,(PROT_READ | PROT_WRITE), MAP_SHARED, __fd, ALT_FPGAMGRDATA_OFST);      \
-	__hps_virtualAdreess_FPGAMGR = mmap(NULL, 0x1000,(PROT_READ | PROT_WRITE), MAP_SHARED, __fd, ALT_FPGAMGR_OFST)             
+    #define __VIRTUALMEM_SPACE_INIT()                                                                                          \
+            int fd;                                                                                                                \
+            fd = open("/dev/mem", (O_RDWR | O_SYNC));                                                                              \
+	    __hps_virtualAdreess_FPGAMFRDATA  = mmap(NULL, 0x04,(PROT_READ | PROT_WRITE), MAP_SHARED, fd, ALT_FPGAMGRDATA_OFST);      \
+	    __hps_virtualAdreess_FPGAMGR = mmap(NULL, 0x1000,(PROT_READ | PROT_WRITE), MAP_SHARED, fd, ALT_FPGAMGR_OFST)             
 
-#define __VIRTUALMEM_SPACE_DEINIT()                                                                                           \
-        munmap((void*) __hps_virtualAdreess_FPGAMFRDATA, 0x04);                                                               \
-        munmap((void*) __hps_virtualAdreess_FPGAMGR, 0x1000);                                                                 \
-        close(__fd)
+    #define __VIRTUALMEM_SPACE_DEINIT()                                                                                           \
+            munmap((void*) __hps_virtualAdreess_FPGAMFRDATA, 0x04);                                                               \
+            munmap((void*) __hps_virtualAdreess_FPGAMGR, 0x1000);                                                                 \
+            close(__fd)
+
 
 
 #endif
@@ -8480,4 +8483,3 @@ extern volatile int __fd;
 }
 #endif  /* __cplusplus */
 #endif  /* __ALTERA_HPS_H__ */
-
