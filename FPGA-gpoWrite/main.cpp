@@ -50,7 +50,9 @@ bool checkIfInputIsVailed(string input, bool DecHex)
 	return false;
 }
 
-
+volatile void* __hps_virtualAdreess_FPGAMGR;
+volatile void* __hps_virtualAdreess_FPGAMFRDATA;
+volatile int __fd;
 int main(int argc, const char* argv[])
 {
 	///////// init the Virtual Memory for I/O access /////////
