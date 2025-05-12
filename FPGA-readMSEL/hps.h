@@ -62,9 +62,18 @@ extern "C"
     #include <fcntl.h>
     #include <unistd.h>
 
-extern volatile void* __hps_virtualAdreess_FPGAMGR;
-extern volatile void* __hps_virtualAdreess_FPGAMFRDATA;
-extern volatile int __fd;
+#ifndef HPS_H
+#define HPS_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern int __fd;
+extern void *__hps_virtualAdreess_FPGAMGR;
+extern void *__hps_virtualAdreess_FPGAMFRDATA;
+#ifdef __cplusplus
+}
+#endif
+#endif // HPS_H
 
     //
     // macro to include the virtual Memory 
