@@ -17,9 +17,7 @@
 #include <thread>					// Required for putting task to sleep 
 #include <chrono>					// Required for putting task to sleep 
 
-volatile void* __hps_virtualAdreess_FPGAMGR;
-volatile void* __hps_virtualAdreess_FPGAMFRDATA;
-volatile int __fd;
+
 
 using namespace std;
 
