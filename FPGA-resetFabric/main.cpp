@@ -16,11 +16,6 @@
 using namespace std;
 
 
-volatile void* __hps_virtualAdreess_FPGAMGR;
-volatile void* __hps_virtualAdreess_FPGAMFRDATA;
-volatile int __fd;
-
-
 int main(int argc, const char* argv[])
 {
 	///////// init the Virtual Memory for I/O access /////////
