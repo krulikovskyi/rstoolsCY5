@@ -60,7 +60,9 @@ extern "C"
 #include <unistd.h>
 
 
-
+extern volatile void* __hps_virtualAdreess_FPGAMGR;
+extern volatile void* __hps_virtualAdreess_FPGAMFRDATA;
+extern volatile int __fd;
 //
 // macro to include the virtual Memory 
 //
